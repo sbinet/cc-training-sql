@@ -45,6 +45,8 @@ USER ${NB_USER}
 ## install the postgres kernel
 RUN ${HOME}/binder/setup-pgsql-kernel
 
+WORKDIR $HOME
+
 ## COPY ./seed.sql /docker-entrypoint-initdb.d/seed.sql
 
 ### COPY ./seed.sql /tmp/seed.sql

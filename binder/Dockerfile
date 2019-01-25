@@ -34,12 +34,12 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 
 ## configure postgres db
-RUN ./${HOME}/setup-db
+RUN ${HOME}/setup-db
 
 USER ${NB_USER}
 
 ## install the postgres kernel
-RUN ./${HOME}/setup-pgsql-kernel
+RUN ${HOME}/setup-pgsql-kernel
 
 ## COPY ./seed.sql /docker-entrypoint-initdb.d/seed.sql
 

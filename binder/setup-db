@@ -7,7 +7,8 @@ set -x
 whoami
 
 /docker-entrypoint.sh postgres &
-sleep 300
+sleep 20
+echo ":::::::::"
 
 #/etc/init.d/postgresql start
 sudo -u postgres createuser -d -e -l -w jovyan

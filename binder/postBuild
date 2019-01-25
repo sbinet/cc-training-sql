@@ -4,6 +4,10 @@ set -e
 set -x
 
 ## configure postgres db
+/etc/init.d/postgresql start
+sudo -u postgres createuser -d -e -l -w jovyan
+sudo -u postgres createuser -d -e -l -w ds2
+sudo -u postgres createdb ds2
 
 ## install the postgres kernel
 pip install postgres_kernel

@@ -1,4 +1,7 @@
-from postgres:11
+from ubuntu:bionic
+
+ENV PG_MAJOR 10
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -7,9 +10,12 @@ RUN apt-get update \
 	curl \
 	git \
 	postgresql postgresql-contrib \
-	"postgresql-plpython-$PG_MAJOR" \
-	python-dev python-pip python-setuptools \
+	postgresql-plpython-${PG_MAJOR} \
+	python3 python3-pip python3-setuptools \
 	sudo
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
 RUN pip install --no-cache-dir notebook==5.*
 
@@ -28,12 +34,12 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 
 ## configure postgres db
-RUN ./binder/setup-db
+RUN ./${HOME}/setup-db
 
 USER ${NB_USER}
 
 ## install the postgres kernel
-RUN ./binder/setup-pgsql-kernel
+RUN ./${HOME}/setup-pgsql-kernel
 
 ## COPY ./seed.sql /docker-entrypoint-initdb.d/seed.sql
 

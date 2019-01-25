@@ -2,3 +2,4 @@
 
 set -e
 
+pip install postgres_kernel

@@ -2,13 +2,14 @@ from postgres:11
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-build-essential \
-ca-certificates \
-curl \
-git \
-postgresql postgresql-contrib postgresql-plpython \
-python-dev python-pip \
-sudo
+	build-essential \
+	ca-certificates \
+	curl \
+	git \
+	postgresql postgresql-contrib \
+	"postgresql-plpython-$PG_MAJOR" \
+	python-dev python-pip \
+	sudo
 
 RUN pip install --no-cache-dir notebook==5.*
 

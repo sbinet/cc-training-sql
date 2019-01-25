@@ -3,6 +3,9 @@
 set -e
 set -x
 
+whoami
+pwd
+
 ## configure postgres kernel
 mkdir -p ./postgres
 cat >| ./postgres/kernel.json << EOF
@@ -19,9 +22,9 @@ cat >| ./postgres/kernel.json << EOF
     "name": "PostgreSQL"
 }
 EOF
-jupyter kernelspec install ./postgres --user
+jupyter kernelspec install ~/postgres --user
 
-/bin/rm -rf ./postgres
+/bin/rm -rf ~/postgres
 
 echo "::: kernel list"
 jupyter kernelspec list

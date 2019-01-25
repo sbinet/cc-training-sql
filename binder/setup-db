@@ -5,6 +5,10 @@ set -x
 
 ## configure postgres db
 whoami
+
+/docker-entrypoint.sh postgres &
+sleep 300
+
 #/etc/init.d/postgresql start
 sudo -u postgres createuser -d -e -l -w jovyan
 sudo -u postgres createuser -d -e -l -w ds2

@@ -1,6 +1,6 @@
-from ubuntu:bionic
+from postgres:11
 
-ENV PG_MAJOR 10
+# ENV PG_MAJOR 10
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \

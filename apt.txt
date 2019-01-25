@@ -4,3 +4,4 @@ curl
 git
 postgresql postgresql-contrib
 python-dev python-pip
+sudo

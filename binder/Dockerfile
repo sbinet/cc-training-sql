@@ -33,6 +33,8 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 
+RUN ls ${HOME}/*
+
 ## configure postgres db
 RUN ${HOME}/setup-db
 

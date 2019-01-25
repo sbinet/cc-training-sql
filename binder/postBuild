@@ -4,7 +4,7 @@ set -e
 set -x
 
 ## configure postgres db
-./setup-db
+./binder/setup-db
 
 ## install the postgres kernel
-./setup-pgsql-kernel
+./binder/setup-pgsql-kernel

@@ -4,34 +4,7 @@ set -e
 set -x
 
 ## configure postgres db
-whoami
-sudo /etc/init.d/postgresql start
-sudo -u postgres createuser -d -e -l -w jovyan
-sudo -u postgres createuser -d -e -l -w ds2
-sudo -u postgres createdb ds2
+./setup-db
 
 ## install the postgres kernel
-pip install postgres_kernel
-
-## configure postgres kernel
-mkdir -p ./binder/postgres
-cat >| ./binder/postgres/kernel.json << EOF
-{
-    "argv": [
-        "python", "-m", "postgres_kernel",
-        "-f", "{connection_file}"
-    ],
-    "display_name": "PostgreSQL",
-    "language": "sql",
-	"codemirror_mode": "sql",
-	"mimetype": "text/x-postgresql",
-    "file_extension": ".sql",
-    "name": "PostgreSQL"
-}
-EOF
-jupyter kernelspec install ./binder/postgres --user
-
-/bin/rm -rf binder
-
-echo "::: kernel list"
-jupyter kernelspec list
+./setup-pgsql-kernel

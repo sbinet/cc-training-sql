@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -x
+
+## configure postgres db
+whoami
+sudo /etc/init.d/postgresql start
+sudo -u postgres createuser -d -e -l -w jovyan
+sudo -u postgres createuser -d -e -l -w ds2
+sudo -u postgres createdb ds2
+
+

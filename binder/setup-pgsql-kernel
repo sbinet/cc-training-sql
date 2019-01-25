@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+set -x
+
+## install the postgres kernel
+pip install postgres_kernel
+
+## configure postgres kernel
+mkdir -p ./binder/postgres
+cat >| ./binder/postgres/kernel.json << EOF
+{
+    "argv": [
+        "python", "-m", "postgres_kernel",
+        "-f", "{connection_file}"
+    ],
+    "display_name": "PostgreSQL",
+    "language": "sql",
+	"codemirror_mode": "sql",
+	"mimetype": "text/x-postgresql",
+    "file_extension": ".sql",
+    "name": "PostgreSQL"
+}
+EOF
+jupyter kernelspec install ./binder/postgres --user
+
+/bin/rm -rf binder/postgres
+
+echo "::: kernel list"
+jupyter kernelspec list

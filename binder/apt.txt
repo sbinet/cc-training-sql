@@ -1,7 +1,0 @@
-build-essential
-ca-certificates
-curl
-git
-postgresql postgresql-contrib postgresql-plpython
-python-dev python-pip
-sudo

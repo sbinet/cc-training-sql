@@ -33,7 +33,7 @@ RUN adduser --disabled-password \
 # Make sure the contents of our repo are in ${HOME}
 COPY . ${HOME}
 USER root
-RUN chown -R ${NB_UID} ${HOME}
+RUN chown -R ${NB_UID}:${NB_UID} ${HOME}
 
 RUN ls ${HOME}/*
 

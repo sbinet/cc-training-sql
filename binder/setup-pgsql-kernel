@@ -3,9 +3,6 @@
 set -e
 set -x
 
-## install the postgres kernel
-pip install postgres_kernel
-
 ## configure postgres kernel
 mkdir -p ./binder/postgres
 cat >| ./binder/postgres/kernel.json << EOF

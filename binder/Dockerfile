@@ -19,6 +19,7 @@ RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
 RUN pip install --upgrade pip wheel setuptools
 RUN pip install --no-cache-dir notebook==5.*
+RUN pip install postgres_kernel
 
 ENV NB_USER jovyan
 ENV NB_UID 1000

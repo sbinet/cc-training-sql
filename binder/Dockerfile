@@ -11,12 +11,13 @@ RUN apt-get update \
 	git \
 	postgresql postgresql-contrib \
 	postgresql-plpython-${PG_MAJOR} \
-	python3 python3-pip python3-setuptools \
+	python3 python3-pip \
 	sudo
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
+RUN pip install --upgrade pip wheel setuptools
 RUN pip install --no-cache-dir notebook==5.*
 
 ENV NB_USER jovyan

@@ -8,7 +8,7 @@ RUN apt-get update \
 	git \
 	postgresql postgresql-contrib \
 	"postgresql-plpython-$PG_MAJOR" \
-	python-dev python-pip \
+	python-dev python-pip python-setuptools \
 	sudo
 
 RUN pip install --no-cache-dir notebook==5.*
